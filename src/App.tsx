@@ -1,8 +1,17 @@
+import { BrowserRouter, Route, Routes } from "react-router-dom";
+
+import HomePage from "./pages/Home/HomePage";
+import MainLayout from "./MainLayout";
+
 function App() {
   return (
-    <h1 className="font-bold text-2xl">
-      FrontRow - Event Ticketing Application
-    </h1>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<MainLayout />}>
+          <Route path="/" element={<HomePage />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 
