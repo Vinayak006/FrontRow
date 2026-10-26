@@ -3,7 +3,7 @@ import toast from "react-hot-toast";
 
 import { login } from "../services/auth.service";
 import type { APIError } from "@/types/error";
-import type { UserResponse } from "@/types/user";
+import type { UserResponse } from "@/types/user.types";
 import type { AxiosError } from "axios";
 import type { LoginFormValues } from "@/pages/Auth/helpers/zod/auth";
 

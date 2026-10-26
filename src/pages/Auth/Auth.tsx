@@ -15,7 +15,7 @@ const Auth = () => {
     if (user) {
       navigate("/", { replace: true });
     }
-  }, [user, navigate]);
+  }, []);
 
   return (
     <main className="flex items-center justify-center p-4">

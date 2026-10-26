@@ -1,10 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import { ArrowRight, CalendarPlus, MapPin } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 
 export const EventActions = () => {
+  const navigate = useNavigate();
+
   return (
-    <section className="p-4 rounded-xl border  space-y-4">
+    <section className="p-4 rounded-xl border  space-y-4 ">
       <div>
         <h2 className="text-lg font-semibold">Grow with FrontRow</h2>
         <p className="text-sm text-muted-foreground">
@@ -19,7 +22,7 @@ export const EventActions = () => {
           <p className="text-sm text-muted-foreground">
             List your venue and connect with event organizers.
           </p>
-          <Button className="w-full">
+          <Button className="w-full" onClick={() => navigate("/venue")}>
             Add venue <ArrowRight size={16} />
           </Button>
         </div>
@@ -30,7 +33,7 @@ export const EventActions = () => {
           <p className="text-sm text-muted-foreground">
             Create an event and reach your local audience.
           </p>
-          <Button className="w-full">
+          <Button className="w-full" onClick={() => navigate("/event")}>
             Host event <ArrowRight size={16} />
           </Button>
         </div>

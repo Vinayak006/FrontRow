@@ -1,8 +1,8 @@
-import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { useNavigate } from "react-router-dom";
 import { useQueryClient } from "@tanstack/react-query";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import {
   ArrowRight,
   Eye,
@@ -25,6 +25,7 @@ interface LoginProps {
 const Login = ({ onSwitchToRegister }: LoginProps) => {
   const navigate = useNavigate();
   const queryClient = useQueryClient();
+  const [searchParams] = useSearchParams();
 
   const [showPassword, setShowPassword] = useState(false);
 
@@ -44,7 +45,11 @@ const Login = ({ onSwitchToRegister }: LoginProps) => {
 
   const onSubmit = (data: LoginFormValues) => {
     mutation.mutate(data, {
-      onSuccess: () => navigate("/", { replace: true }),
+      onSuccess: () => {
+        const redirectUri = searchParams.get("redirect_uri");
+        const navigateRoute = redirectUri || "/";
+        return navigate(navigateRoute, { replace: true });
+      },
     });
   };
 
