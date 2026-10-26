@@ -1,14 +1,12 @@
-import { useLocation, useNavigate } from "react-router-dom";
 import { CalendarDays, MapPin } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
 
-import { Button } from "@/components/ui/button";
-import { useMe } from "../../hooks/useMe";
 import Profile from "./Profile";
+import { Button } from "@/components/ui/button";
 
 const HeaderActions = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
-  const { data: user } = useMe();
 
   const navItems = [
     {
@@ -25,26 +23,24 @@ const HeaderActions = () => {
 
   return (
     <div className="flex items-center gap-1">
-      {user &&
-        navItems.map(({ label, path, icon: Icon }) => {
-          const isActive = pathname === path;
+      {navItems.map(({ label, path, icon: Icon }) => {
+        const isActive = pathname === path;
 
-          return (
-            <Button
-              key={path}
-              variant="ghost"
-              onClick={() => navigate(path)}
-              className={`gap-2 ${
-                isActive &&
-                "text-primary underline underline-offset-4 decoration-2"
-              }`}
-            >
-              <Icon size={18} />
-              {isActive && <span>{label}</span>}
-            </Button>
-          );
-        })}
-
+        return (
+          <Button
+            key={path}
+            variant="ghost"
+            title={isActive ? undefined : label}
+            onClick={() => navigate(path)}
+            className={`gap-2 ${
+              isActive && "text-primary underline underline-offset-20"
+            }`}
+          >
+            <Icon size={18} />
+            {isActive && <span>{label}</span>}
+          </Button>
+        );
+      })}
       <Profile />
     </div>
   );

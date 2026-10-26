@@ -10,7 +10,7 @@ const Loader: React.FC<LoaderProps> = ({ className, text }) => {
   return (
     <div className="flex items-center">
       <LoaderCircle size={16} className={cn("animate-spin", className)} />
-      {text && <span className="ml-2">{text}</span>}
+      {text && <span className="ml-2 italic">{text}</span>}
     </div>
   );
 };

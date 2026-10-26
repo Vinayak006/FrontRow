@@ -18,7 +18,6 @@ interface TextInputProps<T extends FieldValues> {
   label: string;
   type?: string;
   placeholder?: string;
-  autoComplete?: string;
   leftIcon?: ReactNode;
   rightElement?: ReactNode;
 }
@@ -29,7 +28,6 @@ const TextInput = <T extends FieldValues>({
   label,
   type = "text",
   placeholder,
-  autoComplete,
   leftIcon,
   rightElement,
 }: TextInputProps<T>) => {
@@ -49,8 +47,15 @@ const TextInput = <T extends FieldValues>({
               id={inputId}
               type={type}
               placeholder={placeholder}
-              autoComplete={autoComplete}
               aria-invalid={fieldState.invalid}
+              onChange={(event) => {
+                if (type === "number") {
+                  const value = event.currentTarget.valueAsNumber;
+                  field.onChange(Number.isNaN(value) ? undefined : value);
+                } else {
+                  field.onChange(event.currentTarget.value);
+                }
+              }}
             />
 
             {leftIcon && <InputGroupAddon>{leftIcon}</InputGroupAddon>}

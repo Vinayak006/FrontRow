@@ -2,7 +2,7 @@ import { useMutation } from "@tanstack/react-query";
 import toast from "react-hot-toast";
 
 import { register } from "@/services/auth.service";
-import type { UserResponse } from "@/types/user";
+import type { UserResponse } from "@/types/user.types";
 import type { AxiosError } from "axios";
 import type { APIError } from "@/types/error";
 import type { RegisterFormValues } from "@/pages/Auth/helpers/zod/auth";

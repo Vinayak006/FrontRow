@@ -3,7 +3,7 @@ import type {
   RegisterFormValues,
 } from "@/pages/Auth/helpers/zod/auth";
 import { api } from "./api";
-import type { UserResponse } from "@/types/user";
+import type { UserResponse } from "@/types/user.types";
 import { ENDPOINTS } from "@/const/endpoints";
 
 export const login = async (data: LoginFormValues): Promise<UserResponse> => {

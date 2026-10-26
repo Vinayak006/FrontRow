@@ -1,20 +1,16 @@
+import { format } from "date-fns";
 import { Calendar, MapPin } from "lucide-react";
 
 import EventImage from "/src/assets/event.jpg";
+import type { EventRead } from "@/types/event.types";
 
 interface EventCardProps {
-  name: string;
-  description: string;
-  location: string;
+  event: EventRead;
 }
 
-const EventCard: React.FC<EventCardProps> = ({
-  description,
-  location,
-  name,
-}) => {
+const EventCard: React.FC<EventCardProps> = ({ event }) => {
   return (
-    <div className="flex flex-col border  rounded-lg">
+    <div className="flex flex-col border  rounded-lg hover:cursor-pointer hover:border-primary hover:bg-primary-foreground">
       <img
         src={EventImage}
         alt="Event image"
@@ -22,9 +18,9 @@ const EventCard: React.FC<EventCardProps> = ({
       />
 
       <div className="space-y-1 m-4">
-        <h3 className="text-lg font-semibold">{name}</h3>
+        <h3 className="text-lg font-semibold">{event.name}</h3>
         <p className="line-clamp-2 text-sm text-muted-foreground">
-          {description}
+          {event.description}
         </p>
       </div>
 
@@ -34,14 +30,20 @@ const EventCard: React.FC<EventCardProps> = ({
         <div className="flex items-start gap-2">
           <Calendar size={16} className="mt-0.5 shrink-0" />
           <div>
-            <p className="text-sm font-medium">12 Jul</p>
-            <p className="text-xs text-muted-foreground">4:00 – 5:00 PM</p>
+            <p className="text-sm font-medium">
+              {format(new Date(event.from_date), "dd MMM")}
+            </p>
+            <p className="text-xs text-muted-foreground">
+              {format(new Date(`1970-01-01T${event.from_time}`), "h:mm a")}
+              {" – "}
+              {format(new Date(`1970-01-01T${event.to_time}`), "h:mm a")}
+            </p>
           </div>
         </div>
 
         <div className="flex items-start gap-2">
           <MapPin size={16} className="mt-0.5 shrink-0" />
-          <p className="text-sm font-medium">{location}</p>
+          <p className="text-sm font-medium">{event.location}</p>
         </div>
       </div>
     </div>
