@@ -3,14 +3,20 @@ import { Calendar, MapPin } from "lucide-react";
 
 import EventImage from "/src/assets/event.jpg";
 import type { EventRead } from "@/types/event.types";
+import { useNavigate } from "react-router-dom";
 
 interface EventCardProps {
   event: EventRead;
 }
 
 const EventCard: React.FC<EventCardProps> = ({ event }) => {
+  const navigate = useNavigate();
+
   return (
-    <div className="flex flex-col border  rounded-lg hover:cursor-pointer hover:border-primary hover:bg-primary-foreground">
+    <div
+      onClick={() => navigate(`/event/${event.id}`)}
+      className="flex flex-col border  rounded-lg hover:cursor-pointer hover:border-primary hover:bg-primary-foreground"
+    >
       <img
         src={EventImage}
         alt="Event image"

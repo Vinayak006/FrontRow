@@ -14,6 +14,13 @@ export const ENDPOINTS = {
   EVENT: {
     LIST: "/v1/events/",
     CREATE: "/v1/events/",
+    HOLD_SEAT: (event_id: number) => `/v1/events/${event_id}/seats/hold`,
+    SEATS: (event_id: number, event_date: string) =>
+      `/v1/events/${event_id}/seats?event_date=${event_date}`,
+    DETAIL: (event_id: string) => `/v1/events/${event_id}`,
+    BOOKING_DETAIL: (booking_id: string) => `/v1/events/booking/${booking_id}`,
+    BOOKING_CHECKOUT: (booking_id: number) =>
+      `/v1/events/booking/${booking_id}/checkout`,
     DELETE: (event_id: number) => `/v1/events/${event_id}`,
     UPDATE: (event_id: number) => `/v1/events/${event_id}`,
   },
