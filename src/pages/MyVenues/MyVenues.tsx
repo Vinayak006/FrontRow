@@ -17,6 +17,7 @@ const MyVenues = () => {
     page,
     perPage,
     search: "",
+    owned: true,
   });
 
   return (

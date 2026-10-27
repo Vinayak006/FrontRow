@@ -14,13 +14,15 @@ export const getVenues = async (
   page: number,
   perPage: number,
   search: string,
+  owned: boolean,
 ): Promise<Venues> => {
+  const queryParams = new URLSearchParams();
+  if (page) queryParams.append("page", page.toString());
+  if (perPage) queryParams.append("per_page", perPage.toString());
+  if (search) queryParams.append("search", search);
+  queryParams.append("owned_venues", owned.toString());
   const response = await api.get<Venues>(ENDPOINTS.VENUE.CREATE, {
-    params: {
-      page: page,
-      per_page: perPage,
-      search: search,
-    },
+    params: queryParams,
   });
   return response.data;
 };

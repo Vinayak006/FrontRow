@@ -17,6 +17,7 @@ const MyEvents = () => {
     page,
     perPage,
     search: "",
+    owned: true,
   });
 
   return (
