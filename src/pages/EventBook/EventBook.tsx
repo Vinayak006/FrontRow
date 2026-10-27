@@ -61,13 +61,22 @@ const EventBook = () => {
           }}
         />
       </div>
-      <Button
-        className="self-end"
-        disabled={isEventSeatHoldPending}
-        onClick={() => onSubmit(event)}
-      >
-        {isEventSeatHoldPending ? <Loader /> : <>Book seats</>}
-      </Button>
+      <div className="flex items-center justify-between">
+        <div>
+          <p>
+            {selectedSeatIds.length} x {event.base_price}
+          </p>
+          <h3 className="font-semibold">
+            Total: {selectedSeatIds.length * event.base_price}
+          </h3>
+        </div>
+        <Button
+          disabled={isEventSeatHoldPending}
+          onClick={() => onSubmit(event)}
+        >
+          {isEventSeatHoldPending ? <Loader /> : <>Book seats</>}
+        </Button>
+      </div>
     </div>
   );
 };
