@@ -9,6 +9,7 @@ import MainLayout from "./MainLayout";
 import MyEvents from "./pages/MyEvents/MyEvents";
 import EventBook from "./pages/EventBook/EventBook";
 import EventCheckout from "./pages/EventBook/EventCheckout";
+import Chat from "./pages/Chat/Chat";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
           <Route path="/event" element={<EventForm />} />
           <Route path="/my-events" element={<MyEvents />} />
           <Route path="/event/:id" element={<EventBook />} />
+          <Route path="/chat" element={<Chat />} />
           <Route
             path="/event/:id/booking/:booking_id"
             element={<EventCheckout />}

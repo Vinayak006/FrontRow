@@ -1,4 +1,4 @@
-import { CalendarDays, MapPin } from "lucide-react";
+import { Bot, CalendarDays, MapPin } from "lucide-react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import Profile from "./Profile";
@@ -18,6 +18,11 @@ const HeaderActions = () => {
       label: "My Events",
       path: "/my-events",
       icon: CalendarDays,
+    },
+    {
+      label: "Chat",
+      path: "/chat",
+      icon: Bot,
     },
   ];
 

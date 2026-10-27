@@ -1,15 +1,17 @@
 import { format } from "date-fns";
+import { useNavigate } from "react-router-dom";
 import { Calendar, MapPin } from "lucide-react";
 
 import EventImage from "/src/assets/event.jpg";
 import type { EventRead } from "@/types/event.types";
-import { useNavigate } from "react-router-dom";
 
 interface EventCardProps {
+  className?: string;
   event: EventRead;
+  showImage?: boolean;
 }
 
-const EventCard: React.FC<EventCardProps> = ({ event }) => {
+const EventCard: React.FC<EventCardProps> = ({ event, showImage = true }) => {
   const navigate = useNavigate();
 
   return (
@@ -17,11 +19,13 @@ const EventCard: React.FC<EventCardProps> = ({ event }) => {
       onClick={() => navigate(`/event/${event.id}`)}
       className="flex flex-col border  rounded-lg hover:cursor-pointer hover:border-primary hover:bg-primary-foreground"
     >
-      <img
-        src={EventImage}
-        alt="Event image"
-        className="aspect-video object-cover rounded-t-lg"
-      />
+      {showImage && (
+        <img
+          src={EventImage}
+          alt="Event image"
+          className="aspect-video object-cover rounded-t-lg"
+        />
+      )}
 
       <div className="space-y-1 m-4">
         <h3 className="text-lg font-semibold">{event.name}</h3>
