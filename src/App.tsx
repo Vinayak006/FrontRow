@@ -7,6 +7,8 @@ import VenueForm from "./pages/VenueForm/VenueForm";
 import EventForm from "./pages/EventForm/EventForm";
 import MainLayout from "./MainLayout";
 import MyEvents from "./pages/MyEvents/MyEvents";
+import EventBook from "./pages/EventBook/EventBook";
+import EventCheckout from "./pages/EventBook/EventCheckout";
 
 function App() {
   return (
@@ -18,6 +20,11 @@ function App() {
           <Route path="/my-venues" element={<MyVenues />} />
           <Route path="/event" element={<EventForm />} />
           <Route path="/my-events" element={<MyEvents />} />
+          <Route path="/event/:id" element={<EventBook />} />
+          <Route
+            path="/event/:id/booking/:booking_id"
+            element={<EventCheckout />}
+          />
         </Route>
         <Route path="/auth" element={<Auth />} />
       </Routes>

@@ -7,7 +7,7 @@ export const EventActions = () => {
   const navigate = useNavigate();
 
   return (
-    <section className="p-4 rounded-xl border  space-y-4 ">
+    <section className="p-4 rounded-xl border mt-20 space-y-4 ">
       <div>
         <h2 className="text-lg font-semibold">Grow with FrontRow</h2>
         <p className="text-sm text-muted-foreground">

@@ -8,12 +8,18 @@ interface FetchVenuesProps {
   page: number;
   perPage: number;
   search: string;
+  owned: boolean;
 }
 
-export const useFetchVenues = ({ page, perPage, search }: FetchVenuesProps) => {
+export const useFetchVenues = ({
+  page,
+  perPage,
+  search,
+  owned = false,
+}: FetchVenuesProps) => {
   const { data, isFetching, isError } = useQuery({
-    queryKey: ["venues", page, perPage, search],
-    queryFn: () => getVenues(page, perPage, search),
+    queryKey: ["venues", page, perPage, search, owned],
+    queryFn: () => getVenues(page, perPage, search, owned),
   });
 
   useEffect(() => {

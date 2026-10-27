@@ -9,6 +9,8 @@ export type EventCategory =
 
 export type EventStatus = "active" | "inactive";
 
+export type EventSeatStatus = "reserved" | "available" | "hold";
+
 export interface EventInput {
   name: string;
   description: string | null;
@@ -51,4 +53,33 @@ export interface EventRead {
   updated_at: string;
 }
 
+export interface EventSeatInfo {
+  id: number;
+  seat_number: string;
+  status: EventSeatStatus;
+}
+
+export type EventSeats = EventSeatInfo[];
+
 export type Events = EventRead[];
+
+export type EventBookingStatus = "pending" | "confirmed" | "cancelled";
+
+export interface EventSeatHoldRequest {
+  event_id: number;
+  seat_ids: number[];
+  event_date: string;
+}
+
+export interface EventBookingIDResponse {
+  booking_id: number;
+}
+
+export interface EventBookingRead {
+  id: number;
+  event_date: string;
+  hold_expires_at: string;
+  status: EventBookingStatus;
+  event: EventRead;
+  seats: EventSeatInfo[];
+}
