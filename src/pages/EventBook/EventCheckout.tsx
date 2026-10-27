@@ -14,6 +14,7 @@ import Loader from "@/components/shared/Loader";
 import { Button } from "@/components/ui/button";
 import { useFetchEventBookingDetail } from "@/hooks/useFetchEventBookingDetail";
 import { useCheckoutEventBooking } from "@/hooks/useCheckoutEventBooking";
+import CountdownTimer from "./components/CountDownTimer";
 
 const EventCheckout = () => {
   const { booking_id } = useParams();
@@ -251,18 +252,22 @@ const EventCheckout = () => {
               {seatCount} {seatCount === 1 ? "ticket" : "tickets"}
             </p>
           </div>
-
-          <Button
-            className="w-full sm:w-auto sm:min-w-56"
-            size="lg"
-            disabled={seatCount === 0 || isCheckoutPending}
-            onClick={() => {
-              handleCheckout(eventBooking.id);
-            }}
-          >
-            {isCheckoutPending ? <Loader /> : <>Proceed to checkout</>}
-            <ArrowRight className="ml-2 size-4" />
-          </Button>
+          <div className="flex flex-col gap-2">
+            <Button
+              className="w-full sm:w-auto sm:min-w-56"
+              size="lg"
+              disabled={seatCount === 0 || isCheckoutPending}
+              onClick={() => {
+                handleCheckout(eventBooking.id);
+              }}
+            >
+              {isCheckoutPending ? <Loader /> : <>Proceed to checkout</>}
+              <ArrowRight className="ml-2 size-4" />
+            </Button>
+            {eventBooking.hold_expires_at && (
+              <CountdownTimer datetime={eventBooking.hold_expires_at} />
+            )}
+          </div>
         </div>
       </div>
     </div>

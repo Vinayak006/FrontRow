@@ -78,6 +78,7 @@ export interface EventBookingIDResponse {
 export interface EventBookingRead {
   id: number;
   event_date: string;
+  hold_expires_at: string;
   status: EventBookingStatus;
   event: EventRead;
   seats: EventSeatInfo[];
