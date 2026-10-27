@@ -17,8 +17,8 @@ const EventBook = () => {
   const { event, isEventLoading } = useFetchEvent({ id });
 
   const { isEventSeatHoldPending, mutateEventSeatHold } = useEventSeatHold({
-    onSuccess(res, req) {
-      navigate(`/event/${req.event_id}/booking/${res.booking_id}`);
+    onSuccess(res) {
+      navigate(`/event/bookings/${res.booking_id}`);
     },
   });
 

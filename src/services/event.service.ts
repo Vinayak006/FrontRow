@@ -39,6 +39,20 @@ export const getEvents = async (
   return response.data;
 };
 
+export const getEventBookings = async (
+  page: number,
+  perPage: number,
+): Promise<EventBookingRead[]> => {
+  const queryParams = new URLSearchParams();
+  if (page) queryParams.append("page", page.toString());
+  if (perPage) queryParams.append("per_page", perPage.toString());
+
+  const response = await api.get<EventBookingRead[]>(ENDPOINTS.EVENT.BOOKINGS, {
+    params: queryParams,
+  });
+  return response.data;
+};
+
 export const getEvent = async (id: string): Promise<EventRead> => {
   const response = await api.get<EventRead>(ENDPOINTS.EVENT.DETAIL(id));
   return response.data;

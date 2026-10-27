@@ -10,6 +10,8 @@ import MyEvents from "./pages/MyEvents/MyEvents";
 import EventBook from "./pages/EventBook/EventBook";
 import EventCheckout from "./pages/EventBook/EventCheckout";
 import Chat from "./pages/Chat/Chat";
+import MyBookings from "./pages/Bookings/Bookings";
+import BookingDetail from "./pages/Bookings/BookingDetail";
 
 function App() {
   return (
@@ -23,8 +25,10 @@ function App() {
           <Route path="/my-events" element={<MyEvents />} />
           <Route path="/event/:id" element={<EventBook />} />
           <Route path="/chat" element={<Chat />} />
+          <Route path="/my-bookings" element={<MyBookings />} />
+          <Route path="/my-bookings/:booking_id" element={<BookingDetail />} />
           <Route
-            path="/event/:id/booking/:booking_id"
+            path="/event/bookings/:booking_id"
             element={<EventCheckout />}
           />
         </Route>
