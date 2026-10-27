@@ -35,6 +35,10 @@ const Profile = () => {
           <PopoverTitle>{user && user.name ? user.name : "Guest"}</PopoverTitle>
         </PopoverHeader>
 
+        <Button onClick={() => navigate("/my-bookings")} variant={"secondary"}>
+          My Bookings
+        </Button>
+
         {user ? (
           <Button
             variant="outline"

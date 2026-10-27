@@ -73,7 +73,7 @@ const Chat = () => {
           >
             {message.sender === "user" ? (
               <div
-                className={`max-w-[80%] bg-primary text-primary-foreground whitespace-pre-wrap break-words rounded-2xl px-4 py-2.5 text-sm `}
+                className={`max-w-[80%] bg-primary text-primary-foreground whitespace-pre-wrap wrap-break-word rounded-2xl px-4 py-2.5 text-sm `}
               >
                 {message.text}
               </div>
